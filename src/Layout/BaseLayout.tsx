@@ -1,13 +1,24 @@
 import MenuList from "@/Constant/MenuList";
-import { Layout, Menu, Input, Button,Avatar  } from "antd";
-import { UserOutlined } from '@ant-design/icons';
+import { Layout, Menu, Input, Button, Avatar } from "antd";
+import { UserOutlined } from "@ant-design/icons";
 import React from "react";
 import "./BaseLayout.module.less";
+import { BrowserRouter } from "react-router-dom";
 
 const { Header, Content, Footer } = Layout;
 const { Search } = Input;
 
+interface PropsInterface {
+  content: {
+    content: any;
+  };
+}
+
 class BaseLayout extends React.Component {
+  constructor(props: any) {
+    super(props);
+  }
+
   onSearch(value: string) {
     console.log(value);
   }
@@ -36,9 +47,9 @@ class BaseLayout extends React.Component {
           <Button type="primary">傳作者中心</Button>
           <Avatar size="large" icon={<UserOutlined />} />
         </Header>
-        <Content>Content</Content>
+        <Content>{this.props.children}</Content>
         <Footer style={{ textAlign: "center" }}>
-          Ant Design ©2018 Created by Ant UED
+          create by zhouyaxi 2022/9/9
         </Footer>
       </Layout>
     );
